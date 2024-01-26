@@ -9,7 +9,7 @@ on:
 jobs:
   frontend-tests:
     name: Frontend tests
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -23,7 +23,7 @@ jobs:
         run: npm run test
   backend-tests:
     name: Backend tests
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v3
@@ -39,7 +39,7 @@ jobs:
     name: Deploy application
     needs: [frontend-tests, backend-tests]
     if: ${{ (github.event_name == 'push') && (!contains(toJson(github.event.commits.*.message), '#skip')) }}
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     concurrency: deploy-group
     steps:
       - uses: actions/checkout@v3
