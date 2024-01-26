@@ -8,7 +8,7 @@ on:
     types: [opened, synchronize]
 jobs:
   frontend-tests:
-    name: Run frontend tests
+    name: Frontend tests
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
@@ -22,7 +22,7 @@ jobs:
         working-directory: frontend
         run: npm run test
   backend-tests:
-    name: Run backend tests
+    name: Backend tests
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
@@ -43,7 +43,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: superfly/flyctl-actions/setup-flyctl@master
-      - run: flyctl deploy --local-only
+      - run: flyctl deploy --remote-only
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
   tag_release:
