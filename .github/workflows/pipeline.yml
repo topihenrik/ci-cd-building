@@ -23,7 +23,7 @@ jobs:
         run: npm run test
   backend-tests:
     name: Run backend tests
-    runs-on: python:3.8
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v3
