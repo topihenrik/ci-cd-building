@@ -57,11 +57,8 @@ jobs:
       with:
         webhook: ${{ secrets.DISCORD_WEBHOOK }}
         status: ${{ job.status }}
-        content: "Hey <@316911818725392384>"
-        title: "deploy"
-        description: "Pull request has been merged"
+        title: "PR merge to main"
         color: 0x0000ff
-        url: "https://github.com/sarisia/actions-status-discord"
         username: GitHub Actions
   tag_release:
     permissions: write-all
