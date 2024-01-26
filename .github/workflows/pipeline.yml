@@ -17,10 +17,10 @@ jobs:
           node-version: "18"
       - name: install frontend
         working-directory: frontend
-        run: npm install
+        run: yarn
       - name: test frontend
         working-directory: frontend
-        run: npm run test
+        run: yarn test
   backend-tests:
     name: Backend Tests
     runs-on: ubuntu-latest
