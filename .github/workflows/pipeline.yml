@@ -57,9 +57,10 @@ jobs:
       with:
         webhook: ${{ secrets.DISCORD_WEBHOOK }}
         status: ${{ job.status }}
-        title: "PR merge to main"
-        color: 0x0000ff
+        title: "PR merged to main branch"
+        color: 0x32cd32
         username: GitHub Actions
+        avatar_url: ${{ secrets.AVATAR_URL }}
   tag_release:
     permissions: write-all
     name: Tag Release
