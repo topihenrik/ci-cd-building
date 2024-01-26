@@ -16,9 +16,9 @@ jobs:
         with:
           node-version: "18"
       - name: install frontend
-        run: yarn
+        run: yarn --prefix frontend
       - name: test frontend
-        run: yarn test
+        run: yarn test --prefix frontend
   deploy:
     name: Deploy application
     needs: [tests]
