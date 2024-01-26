@@ -47,6 +47,22 @@ jobs:
       - run: flyctl deploy --remote-only
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+  discord_notify:
+    name: Notify Discord
+    runs-on: ubuntu-latest
+    needs: [frontend-tests, backend-tests]
+    if: ${{(github.event_name == 'push')}}
+    steps:
+    - uses: sarisia/actions-status-discord@v1.13.0
+      with:
+        webhook: ${{ secrets.DISCORD_WEBHOOK }}
+        status: ${{ job.status }}
+        content: "Hey <@316911818725392384>"
+        title: "deploy"
+        description: "Pull request has been merged"
+        color: 0x0000ff
+        url: "https://github.com/sarisia/actions-status-discord"
+        username: GitHub Actions
   tag_release:
     permissions: write-all
     name: Tag Release
