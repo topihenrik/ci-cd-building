@@ -35,7 +35,7 @@ jobs:
         run: python -m pytest
   deploy:
     name: Deploy application
-    needs: [tests]
+    needs: [frontend-tests, backend-tests]
     if: ${{ (github.event_name == 'push') && (!contains(toJson(github.event.commits.*.message), '#skip')) }}
     runs-on: ubuntu-20.04
     steps:
