@@ -10,13 +10,13 @@ jobs:
   frontend-tests:
     name: Run frontend tests
     runs-on: ubuntu-20.04
+    env:
+      working-directory: frontend
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: "18"
-      - name: change working directory
-        run: cd frontend
       - name: install frontend
         run: npm install
       - name: test frontend
@@ -24,6 +24,8 @@ jobs:
   backend-tests:
     name: Run backend tests
     runs-on: python:3.8
+    env:
+      working-directory: backend
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v3
