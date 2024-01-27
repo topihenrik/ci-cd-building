@@ -13,6 +13,4 @@ COPY /backend/flaskr /server/flaskr
 COPY --from=frontend-build /dist /server/flaskr/static
 RUN pip install -r requirements.txt
 
-
-
 CMD ["python3", "-m", "gunicorn", "--chdir", "/server/flaskr", "--bind", "0.0.0.0:8080", "app:app"]
